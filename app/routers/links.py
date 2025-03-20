@@ -32,7 +32,7 @@ def redirect(short_code: str, db: Session = Depends(get_db)):
         url = cached.decode()
     else:
         link = db.query(models.Link).filter(models.Link.short_code == short_code).first()
-        if not link or (link.expires_at and link.expires_at < datetime.now(timezone.utc)):
+        if not link or (link.expires_at and link.expires_at.replace(tzinfo=timezone.utc) < datetime.now(timezone.utc)):
             raise HTTPException(status_code=404, detail="Link not found")
         url = link.original_url
         r.hset(key, mapping={"original_url": url})

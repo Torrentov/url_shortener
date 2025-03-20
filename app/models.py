@@ -1,6 +1,6 @@
 from sqlalchemy import Column, Integer, String, DateTime, ForeignKey
 from sqlalchemy.orm import relationship
-from datetime import datetime
+from datetime import datetime, timezone
 from app.database import Base
 
 
@@ -16,9 +16,8 @@ class Link(Base):
     id = Column(Integer, primary_key=True)
     short_code = Column(String, unique=True, index=True)
     original_url = Column(String)
-    custom_alias = Column(String, unique=True, nullable=True)
     owner_id = Column(Integer, ForeignKey('users.id'), nullable=True)
-    created_at = Column(DateTime, default=datetime.utcnow)
+    created_at = Column(DateTime, default=datetime.now(timezone.utc))
     expires_at = Column(DateTime)
     clicks = Column(Integer, default=0)
     last_used = Column(DateTime)
