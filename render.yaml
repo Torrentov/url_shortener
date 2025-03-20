@@ -1,9 +1,0 @@
-services:
-  - type: web
-    name: url-shortener
-    env: docker
-    branch: main
-    dockerComposeFile: docker-compose.yaml
-    healthCheckPath: /health
-    plan: free
-    releaseCommand: alembic upgrade head
