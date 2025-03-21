@@ -17,12 +17,6 @@ git clone https://github.com/Torrentov/url_shortener && cd url_shortener
 ```bash  
 docker-compose up --build -d  
 ```
-
-4️⃣ Примените миграции  
-```bash  
-docker-compose exec web alembic upgrade head  
-```
-
 ---
 
 ## Структура БД
