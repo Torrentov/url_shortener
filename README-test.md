@@ -28,6 +28,7 @@ docker-compose exec web coverage run -m pytest
 docker cp $(docker-compose ps -q web):/app/html_cov ./html_cov
 ```
 
+Результаты можно посмотреть, открыв `html_cov/index.html`
 ---
 
 ## Нагрузочное тестирование
